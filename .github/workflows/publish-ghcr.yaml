@@ -16,13 +16,13 @@ jobs:
       matrix:
         include:
           - name: web-main
-            context: apps/web/main
+            context: .
             dockerfile: apps/web/main/Dockerfile
           - name: web-dripper
-            context: apps/web/dripper
+            context: .
             dockerfile: apps/web/dripper/Dockerfile
           - name: rssimport
-            context: apps/rssimport
+            context: .
             dockerfile: apps/rssimport/Dockerfile
 
     steps:
