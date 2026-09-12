@@ -6,6 +6,7 @@ on:
 
 jobs:
   build-and-push:
+    if: ${{ false }} # comment out this line to make the action run
     runs-on: ubuntu-latest
     permissions:
       contents: read
