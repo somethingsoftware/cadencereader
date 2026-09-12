@@ -14,7 +14,7 @@ jobs:
       with:
         oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
         oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-        tags: tag:ci
+        tags: tag:nuc-k3s
     
     - name: Execute remote SSH commands using SSH key
       uses: appleboy/ssh-action@v1
