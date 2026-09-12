@@ -14,12 +14,13 @@ jobs:
       with:
         oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
         oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-        tags: tag:nuc-k3s
+        tags: tag:ci
     
-    - name: Start Deployment
-      uses: FarisZR/tailscale-ssh-deploy@v1
+    - name: Execute remote SSH commands using SSH key
+      uses: appleboy/ssh-action@v1
       with:
-        remote_host: github@100.87.250.127
-        directory: generated
-        remote_destination: /users/sam/git/somethingsoftware/cadencereader # TODO move to /var/www ?
-        post_upload_command: echo thats it
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: echo 'ssh login success'
