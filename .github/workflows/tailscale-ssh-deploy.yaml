@@ -1,0 +1,26 @@
+name: Tailscale k3s SSH Deploy
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Tailscale
+      uses: tailscale/github-action@v2
+      with:
+        hostname: Github-actions
+        oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+        oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+        tags: tag:ci
+    
+    - name: Start Deployment
+      uses: FarisZR/tailscale-ssh-deploy@v1
+      with:
+        remote_host: github@100.87.250.127
+        directory: generated
+        remote_destination: /root/www
+        post_upload_command: echo thats it
