@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: dripper
-          image: dripper:latest
-          imagePullPolicy: Never
+          image: ghcr.io/somethingsoftware/web-dripper:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8081
           resources:

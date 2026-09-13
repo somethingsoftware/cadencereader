@@ -11,8 +11,8 @@ spec:
           restartPolicy: OnFailure
           containers:
             - name: rssimport
-              image: rssimport:latest
-              imagePullPolicy: Never
+              image: ghcr.io/somethingsoftware/rssimport:latest
+              imagePullPolicy: Always
               resources:
                 limits:
                   memory: "200Mi"

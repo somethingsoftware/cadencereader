@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
         - name: cadencereader
-          image: cadencereader:latest
-          imagePullPolicy: Never
+          image: ghcr.io/somethingsoftware/web-main:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           resources:
