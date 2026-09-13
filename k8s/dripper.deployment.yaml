@@ -36,11 +36,11 @@ spec:
           - name: APP_ENV
             value: "prod"
           - name: MAIN_HOST
-            value: "localhost"
+            value: "0.0.0.0"
           - name: MAIN_HTTP_PORT
             value: "8080"
           - name: DRIPPER_HOST
-            value: "localhost"
+            value: "0.0.0.0"
           - name: DRIPPER_HTTP_PORT
             value: "8081"
           - name: DATABASE_URL
