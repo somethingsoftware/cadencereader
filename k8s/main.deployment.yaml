@@ -18,6 +18,8 @@ spec:
         - name: cadencereader
           image: ghcr.io/somethingsoftware/web-main:latest
           imagePullPolicy: Always
+          imagePullSecrets:
+            - name: ghcr-pull-secret
           ports:
             - containerPort: 8080
           resources:

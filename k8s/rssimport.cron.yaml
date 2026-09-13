@@ -13,6 +13,8 @@ spec:
             - name: rssimport
               image: ghcr.io/somethingsoftware/rssimport:latest
               imagePullPolicy: Always
+              magePullSecrets:
+                - name: ghcr-pull-secret
               resources:
                 limits:
                   memory: "200Mi"
