@@ -69,4 +69,4 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.SSH_PORT }}
-        script: cd /home/sam/git/somethingsoftware/cadencereader/; KUBECONFIG=$HOME/.kube/config ./kapply.sh
+        script: cd /home/sam/git/somethingsoftware/cadencereader/; git pull; KUBECONFIG=$HOME/.kube/config ./kapply.sh
