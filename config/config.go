@@ -33,7 +33,7 @@ type Config struct {
 func Load(extraEnv ...string) (Config, error) {
 	getEnv := func(key string) string {
 		val := os.Getenv(key)
-		if len(strings.TrimSpace(val)) == 0 {
+		if len(strings.TrimSpace(val)) == 0 && !strings.Contains(strings.ToLower(key), "host") {
 			slog.Error("Env var empty or all whitespace", "key", key)
 			os.Exit(1)
 		}
