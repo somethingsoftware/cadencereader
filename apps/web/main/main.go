@@ -109,13 +109,13 @@ func post(ctx context.Context, cfg config.Config, queries *database.Queries) htt
 			slog.Error("Failed to get blog post", "error", err)
 			return
 		}
-		dd := cfg.DripperDomain
-		if cfg.AppEnv == config.Local {
-			dd = fmt.Sprintf("http://%s:%d", cfg.DripperDomain, cfg.DripperHTTPport)
+		proto := "http"
+		if cfg.AppEnv == config.Prod {
+			proto += "s"
 		}
 		pph := postPlusDomain{
 			BlogPost: post,
-			Domain:   dd,
+			Domain:   fmt.Sprintf("%s://%s:%d", proto, cfg.DripperDomain, cfg.DripperHTTPport),
 		}
 		tmpl := template.Must(template.ParseFiles(cfg.Extra["VIEW_FOLDER"] + "/post.gohtml"))
 		if err := tmpl.Execute(w, pph); err != nil {
