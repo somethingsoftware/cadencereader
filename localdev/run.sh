@@ -28,7 +28,7 @@ fi
 echo "compiling rssimport app";
 echo "compilation time:";
 TIMEFORMAT=%R;
-time go build -o rssbin ../apps/rssimport  ;
+time go build -o import ../apps/rssimport  ;
 if [ $? -ne 0 ]; then 
     echo "build failed, check error above";
     exit 1;
@@ -41,7 +41,7 @@ set +a
 export DATABASE_URL=postgres://$DB_USER:$DB_PASS@localhost:$DB_PORT/$DB_NAME?sslmode=disable
 
 echo "running rss import"
-./rssbin
+./import
 
 echo "starting broswer";
 (sleep 1; open http://$MAIN_HOST:$MAIN_HTTP_PORT) &
