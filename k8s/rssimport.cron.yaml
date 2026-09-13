@@ -13,7 +13,7 @@ spec:
             - name: rssimport
               image: ghcr.io/somethingsoftware/rssimport:latest
               imagePullPolicy: Always
-              magePullSecrets:
+              imagePullSecrets:
                 - name: ghcr-pull-secret
               resources:
                 limits:
