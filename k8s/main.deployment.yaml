@@ -14,12 +14,12 @@ spec:
       labels:
         app: cadencereader
     spec:
+      imagePullSecrets:
+        - name: ghcr-pull-secret
       containers:
         - name: cadencereader
           image: ghcr.io/somethingsoftware/web-main:latest
           imagePullPolicy: Always
-          imagePullSecrets:
-            - name: ghcr-pull-secret
           ports:
             - containerPort: 8080
           resources:

@@ -14,12 +14,12 @@ spec:
       labels:
         app: dripper
     spec:
+      imagePullSecrets:
+        - name: ghcr-pull-secret
       containers:
         - name: dripper
           image: ghcr.io/somethingsoftware/web-dripper:latest
           imagePullPolicy: Always
-          imagePullSecrets:
-            - name: ghcr-pull-secret
           ports:
             - containerPort: 8081
           resources:
