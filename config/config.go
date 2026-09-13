@@ -22,8 +22,10 @@ const (
 type Config struct {
 	AppEnv          AppEnvironment
 	MainHost        string
+	MainDomain      string
 	MainHTTPport    uint16
 	DripperHost     string
+	DripperDomain   string
 	DripperHTTPport uint16
 	DatabaseURL     *url.URL
 	MigrationFolder string
@@ -53,6 +55,7 @@ func Load(extraEnv ...string) (Config, error) {
 	}
 
 	MainHost := getEnv("MAIN_HOST")
+	MainDomain := getEnv("MAIN_DOMAIN")
 	mhp := getEnv("MAIN_HTTP_PORT")
 	MainHTTPport, err := strconv.ParseUint(mhp, 10, 16)
 	if err != nil {
@@ -61,6 +64,7 @@ func Load(extraEnv ...string) (Config, error) {
 	}
 
 	DripperHost := getEnv("DRIPPER_HOST")
+	DripperDomain := getEnv("DRIPPER_DOMAIN")
 	dhp := getEnv("DRIPPER_HTTP_PORT")
 	DripperHTTPport, err := strconv.ParseUint(dhp, 10, 16)
 	if err != nil {
@@ -85,8 +89,10 @@ func Load(extraEnv ...string) (Config, error) {
 	return Config{
 		AppEnv:          appEnv,
 		MainHost:        MainHost,
+		MainDomain:      MainDomain,
 		MainHTTPport:    uint16(MainHTTPport),
 		DripperHost:     DripperHost,
+		DripperDomain:   DripperDomain,
 		DripperHTTPport: uint16(DripperHTTPport),
 		DatabaseURL:     dbURL,
 		MigrationFolder: migrationFolder,

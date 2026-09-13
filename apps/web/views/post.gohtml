@@ -14,7 +14,7 @@
             const selectElement = document.getElementById("segment_types");
             const selectedValue = selectElement.value;
             console.log(`segment type ${selectedValue}`);
-            const url = `{{.Host}}/post/{{.ID}}/${selectedValue}/` + idx;
+            const url = `{{.Domain}}/post/{{.ID}}/${selectedValue}/` + idx;
             try {
                 var attemptedIdx = idx;
                 idx++

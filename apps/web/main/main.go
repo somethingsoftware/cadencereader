@@ -90,9 +90,9 @@ func index(ctx context.Context, cfg config.Config, queries *database.Queries) ht
 }
 
 func post(ctx context.Context, cfg config.Config, queries *database.Queries) http.HandlerFunc {
-	type postPlusHost struct {
+	type postPlusDomain struct {
 		database.BlogPost
-		Host string
+		Domain string
 	}
 
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -109,13 +109,13 @@ func post(ctx context.Context, cfg config.Config, queries *database.Queries) htt
 			slog.Error("Failed to get blog post", "error", err)
 			return
 		}
-		dh := cfg.DripperHost
+		dd := cfg.DripperDomain
 		if cfg.AppEnv == config.Local {
-			dh = fmt.Sprintf("http://%s:%d", cfg.DripperHost, cfg.DripperHTTPport)
+			dd = fmt.Sprintf("http://%s:%d", cfg.DripperDomain, cfg.DripperHTTPport)
 		}
-		pph := postPlusHost{
+		pph := postPlusDomain{
 			BlogPost: post,
-			Host:     dh,
+			Domain:   dd,
 		}
 		tmpl := template.Must(template.ParseFiles(cfg.Extra["VIEW_FOLDER"] + "/post.gohtml"))
 		if err := tmpl.Execute(w, pph); err != nil {
