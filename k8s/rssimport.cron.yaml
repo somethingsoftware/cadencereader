@@ -28,7 +28,7 @@ spec:
                 value: "cadencereader.com"
               - name: MAIN_HTTP_PORT
                 value: "8080"
-              - name: MAIN_HOST
+              - name: DRIPPER_HOST
                 value: "dripper.cadencereader.com"
               - name: DRIPPER_HTTP_PORT
                 value: "8081"
